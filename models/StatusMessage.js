@@ -22,7 +22,7 @@ exports.sendEmail =  function (fetchedUsers,content,subject){
 	var sendgrid = require("sendgrid")(process.env.SENDGRID_API_KEY);
 	var email = new sendgrid.Email();
 	console.log("Should send an email:"+content);
-	email.addTo(fetchedUsers);
+	email.setTos(fetchedUsers);
 	email.setFrom("anuraggupta86@gmail.com");
 	email.setSubject(subject);
 	email.setHtml(content);
