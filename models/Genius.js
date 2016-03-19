@@ -158,6 +158,8 @@ Genius.schema.virtual('canAccessKeystone').get(function() {
 });
 
 function scrubDate(date){
+	date = date.toUTCString()
+	console.log('date--->'+date);
 	return date.getDate()+':'+date.getMonth()+':'+date.getFullYear();
 }
 
