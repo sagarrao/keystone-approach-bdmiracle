@@ -142,7 +142,7 @@ Genius.schema.virtual('canAccessKeystone').get(function() {
 });
 
 Genius.schema.pre('save',function(next){
-	if(this.notify && this.enrolledForHabitIn66Days){
+	if(this.notify && this.enrolledForHabitIn66Days && !this.habitsProgramNotifiedForFirstTime){
 		console.log("Inside habits if loop");
 		var fetchedUser = [];
 		fetchedUser.push(this);
