@@ -12,22 +12,6 @@ var Genius = new keystone.List('Genius',{
 	autokey: { path: 'skills', from: 'topSkill', unique: false },
 });
 
-function checkTopSkill(){
-	console.log(this.status)
-	console.log(this.topSkill)
-	/*if (this.status == 'Report Processed' && this.topSkill == 'default'){
-		return false;
-	}*/
-	return true;
-}
-
-function checkTop3Skills(){
-	/*if (this.notify && this.top3Skills.trim() == ''){
-		return false;
-	}*/
-	return true;
-}
-
 var StatusMsgAndSub = require('./StatusMessage');
 
 function callback(err){
@@ -165,26 +149,7 @@ Genius.schema.pre('save',function(next){
 		var contentemail = StatusMsgAndSub.habitsWelcomeMessage;
 		var subemail = StatusMsgAndSub.habitsProgramNotificationSubject;
 		async.applyEach([StatusMsgAndSub.sendEmail,sendMessage],fetchedUser,contentemail,subemail,callback);
-		/*
-		var openingemail = "Hi " + this.name.first + ',' + '\n' + StatusMsgAndSub.greetingMessage + '\n'+ '\n';
-		if(this.status == 'Report Processed'  ){
-			contentemail = openingemail + StatusMsgAndSub.reportProcessedMsg ;
-		    subemail = StatusMsgAndSub.reportProcessedSub;
-		}
-		else if(this.status == 'Counselling Done'  ){
-			contentemail = openingemail + StatusMsgAndSub.counsellingDoneMsg ;
-			subemail = StatusMsgAndSub.counsellingDoneSub;
-		}
-		else if(this.status == 'Scan Taken-Report Not Arrived'  ){
-			contentemail = openingemail + StatusMsgAndSub.scanTakenreportNotArrivedMsg ;
-			subemail = StatusMsgAndSub.scanTakenreportNotArrivedSub;
-		}
-		else if(this.status == 'Scan Scheduled'  ){
-			contentemail = openingemail + StatusMsgAndSub.scanScheduledMsg + ' for ' + this.scanAppointmentDate;
-			subemail = StatusMsgAndSub.scanScheduledSub;
-		}
-		contentemail = contentemail + '\n' + StatusMsgAndSub.closingMessage+ '\n' + StatusMsgAndSub.signature;
-		async.applyEach([StatusMsgAndSub.sendEmail,sendMessage],fetchedUser,contentemail,subemail,callback);*/
+		
 		this.notify = undefined;
 		this.habitsProgramNotifiedForFirstTime = true;
 	}

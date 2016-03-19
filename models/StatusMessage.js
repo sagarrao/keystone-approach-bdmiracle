@@ -22,7 +22,7 @@ exports.sendEmail =  function (fetchedUsers,content,subject){
 	var sendgrid = require("sendgrid")(process.env.SENDGRID_API_KEY);
 	var email = new sendgrid.Email();
 	console.log("Should send an email:"+content);
-	email.setTos(fetchedUsers);
+	email.addTo(fetchedUsers[0]);
 	email.setFrom("anuraggupta86@gmail.com");
 	email.setSubject(subject);
 	email.setHtml(content);
@@ -32,24 +32,4 @@ exports.sendEmail =  function (fetchedUsers,content,subject){
 	  if (err) { return console.error(err); }
 	  console.log(json);
 	});
-	/*var message = {
-    "text": content,
-    "subject": subject,
-    "from_email": "lsagar.12@gmail.com",
-    "from_name": "Sagar",
-    "to": fetchedUsers,
-    "important": false,
-    "track_opens": true,
-    "track_clicks": true,
-    "auto_text": true
-	};
-	
-	mandrill_client.messages.send({"message": message}, function(result) {
-    console.log(result);
-   
-	}, function(e) {
-    // Mandrill returns the error as an object with name and message keys
-		console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-	});*/
-
 };
