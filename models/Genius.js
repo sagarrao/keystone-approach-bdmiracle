@@ -164,7 +164,7 @@ function scrubDate(date){
 }
 
 Genius.schema.pre('save',function(next){
-	if(this.notify && this.enrolledForHabitIn66Days && (scrubDate(this.habitsProgramEnrollmentDate) == scrubDate(new Date()))){
+	if(this.notify && this.enrolledForHabitIn66Days && this.habitsProgramEnrollmentDate.toDateString() == (new Date()).toDateString()){
 		console.log("Inside habits if loop");
 		var fetchedUser = [];
 		fetchedUser.push(this);
