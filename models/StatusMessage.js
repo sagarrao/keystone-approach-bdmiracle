@@ -20,8 +20,9 @@ exports.signature = '\n' + 'Thanks and Regards,' + '\n' + 'Find Your Talents' + 
 
 exports.sendEmail =  function (fetchedUsers,content,subject){
 	var sendgrid = require("sendgrid")(process.env.SENDGRID_API_KEY);
+	console.log('email-->'+fetchedUsers[0].email);
 	var email    = new sendgrid.Email({
-	  to:       fetchedUsers[0],
+	  to:       fetchedUsers[0].email,
 	  from:     'anuraggupta86@gmail.com',
 	  subject:  subject,
 	  text:     content
