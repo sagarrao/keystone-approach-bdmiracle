@@ -8,7 +8,7 @@ exports.habitsWelcomeMessage = 'Welcome to Habit in 66 Days experience, which he
 'Today is the first day of your program. Make sure you have collected the Tracker and follow the Guidelines.'+"\n\n"+
 'In case of any doubts/questions/concerns reach out to us at 91-9739742036'+"\n\n"+
 'Happy Habit Building.'+"\n\n"+
-'Regards,'+"\n"+
+'Regards,'+'\n\n'+
 'Team HabitIn66Days'
 exports.reportProcessedSub = 'Find Your Talents : Scan Report is Generated.';
 exports.counsellingDoneSub = 'Find Your Talents : Conuselling is Done.';

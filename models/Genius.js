@@ -146,7 +146,7 @@ Genius.schema.pre('save',function(next){
 		console.log("Inside habits if loop");
 		var fetchedUser = [];
 		fetchedUser.push(this);
-		var contentemail = StatusMsgAndSub.habitsWelcomeMessage;
+		var contentemail = 'Hi '+ this.name + '\n\n' + StatusMsgAndSub.habitsWelcomeMessage;
 		var subemail = StatusMsgAndSub.habitsProgramNotificationSubject;
 		async.applyEach([StatusMsgAndSub.sendEmail,sendMessage],fetchedUser,contentemail,subemail,callback);
 		
